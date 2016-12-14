@@ -1,0 +1,11 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:csjcode/graphql-server.git",
+  "author": "csjcode <christophersstjohn@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "graphql": "^0.8.2"
+  }
+}

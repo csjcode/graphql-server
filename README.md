@@ -24,8 +24,7 @@
 * Summary: we're making a Query, it's matched to the Schema, Resolved and then an OBJECT is returned to the console   
 
 * > node index.js  
-
-* returns: { data: { foo: 'bar' } }
+* Response: { data: { foo: 'bar' } }
 
 ### 2 - GraphQL primitve types 1:57
 
@@ -34,3 +33,14 @@
 * add fields to Query
 * > node index.js
 * Response:{ data: { id: '1', title: 'bar', duration: 180, watched: true } }
+
+### 3 - GraphQL Object type for Basic types 1:57
+
+* Instead of having a Query type we can just make up a new object - call it Video
+* index: type Video { }
+* Then, in Query type we add video: Video
+* In Resolvers we can have a video field
+* Inside the Resolvers' video field we add in the fields:   video: () => ({ id: '1', title: 'foo', duration: '180', watched: true,})
+* Next we update our Query, instead of querying fields, we query the Object with the same fields inside.
+* > node index.js  
+* Response: { data: { foo: 'bar' } }

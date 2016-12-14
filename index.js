@@ -12,6 +12,7 @@ const schema = buildSchema(`
 
   type Query {
     video: Video
+    videos: [Video]
   }
 
   type Schema {
@@ -19,18 +20,36 @@ const schema = buildSchema(`
   }
 `);
 
+const videoA = {
+  id: 'a',
+  title: 'Create a GraphQl server',
+  duration: '120',
+  watched: true,
+}
+
+const videoB = {
+  id: 'b',
+  title: 'Create another GraphQl server',
+  duration: '110',
+  watched: false,
+}
+
+const videos = [videoA,videoB]
+
+
 const resolvers = {
   video: () => ({
     id: '1',
     title: 'foo',
     duration: '180',
     watched: true,
-  })
+  }),
+  videos: () => videos
 }
 
 const query = `
   query myFirstQuery {
-    video {
+    videos {
       id,
       title,
       duration,

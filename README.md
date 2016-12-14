@@ -28,3 +28,9 @@
 * returns: { data: { foo: 'bar' } }
 
 ### 2 - GraphQL primitve types 1:57
+
+* index.js: id, title, duration, wacthed
+* add new types to Resolvers
+* add fields to Query
+* > node index.js
+* Response:{ data: { id: '1', title: 'bar', duration: 180, watched: true } }

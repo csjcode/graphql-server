@@ -26,7 +26,7 @@
 * > node index.js  
 * Response: { data: { foo: 'bar' } }
 
-### 2 - GraphQL primitve types 1:57
+### 2 - GraphQL primitive types
 
 * index.js: id, title, duration, wacthed
 * add new types to Resolvers
@@ -34,7 +34,7 @@
 * > node index.js
 * Response:{ data: { id: '1', title: 'bar', duration: 180, watched: true } }
 
-### 3 - GraphQL Object type for Basic types 1:57 - refactors Query to have the object name Video
+### 3 - GraphQL Object type for Basic types refactors Query to have the object name Video
 
 
 * Instead of having a Query type we can just make up a new object - call it Video
@@ -59,3 +59,21 @@
 * Next we update our Query to be videos
 * > node index.js  
 * Response: { data: { videos: [ [Object], [Object] ] } }
+
+### 5 - Serve a GraphQL Schema as Middleware in Express
+
+* We're going to see how to use GraphQL in Express
+* We need to add a couple dependencies
+* > yarn add express express-graphql
+* require oth modules
+* add PORT variable
+* const PORT = process.env.PORT || 3000; const server  express();
+* remove graphql utility function (bottom of script)
+* add server.use('/graphql', graphqlHTTP({}))
+* >node index.js
+* Listening on http://localhost:3000
+* http://localhost:3000/graphql0
+* index.js: under server.use rootValue: resolvers
+* quite server, save index file, restart
+* http://localhost:3000/graphql
+* { videos { title }}

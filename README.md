@@ -129,6 +129,17 @@ Listening on: http://localhost:3000
 * .... we pass in: { video(id:"a") { title } }    
 *
 
-### 6 - Serve a GraphQL Schema as Middleware in Express
-### 6 - Serve a GraphQL Schema as Middleware in Express
-### 6 - Serve a GraphQL Schema as Middleware in Express
+### 8 - Use GraphQLNonNull for Required Fields
+
+* We start our server * http://localhost:3000/graphql
+* If we pass in: { video { title } }   
+* We will get null as a response
+* Add GraphQLNonNull in require
+* In QueryType args at GraphQLNonNull
+* change GraphQLID to new GraphQLNonNull(GraphQLID)
+* We start our server * http://localhost:3000/graphql
+* If we pass in: { video { title } }   
+* Returns: message": "Field \"video\" argument \"id\" of type \"ID!\" is required
+
+### 9 - Use GraphQLList with GraphQLObject Types
+### 10 - Write a GraphQL Mutation

@@ -2,6 +2,7 @@
 
 const express = require ('express');
 const graphqlHTTP = require ('express-graphql');
+const {getVideoById} = require ('./src/data/');
 
 const {
   GraphQLSchema,
@@ -44,14 +45,15 @@ const queryType = new GraphQLObjectType ({
   fields:  {
     video: {
       type: videoType,
-      resolve: () => new Promise ((resolve) => {
-        resolve({
-          id: 'a',
-          title: 'GraphQL',
-          duration: '120',
-          watched: true
-        });
-      })
+      args: {
+        id: {
+          type: GraphQLID,
+          description: 'The id of the video.'
+        }
+      },
+      resolve: (_, args) => {
+        return getVideoById(args.id);
+      }
     }
   }
 });

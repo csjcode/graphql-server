@@ -109,6 +109,25 @@ Listening on: http://localhost:3000
 
 ### 7 - Use Arguments in a GraphQL Query
 
+* We have a GraphQL schema with one query statement
+* we can add more arguments with args key (inside fields: video:)
+* Add id
+* Now when we start our server * http://localhost:3000/graphql
+* .... we pass in: { video(id:"a") { title } }
+* this gets the record title
+* create a new file: src\data\index.js
+* cut and paste the original videoA and videoB info into it
+* create  a helper function getVideoByID
+* const getVideoByID = (id) => new Promise ((resolve) => {})
+* fill in resolve function
+* exports.getVideoByID = getVideoByID;
+* require in index.js
+* update resolve statement, instead of resolving a static object
+* write out resolve as a function
+* resolve(\_, args) => { return getVideoByID(args.id); };     (note: remove escape in argument)
+* Now when we start our server * http://localhost:3000/graphql
+* .... we pass in: { video(id:"a") { title } }    
+*
 
 ### 6 - Serve a GraphQL Schema as Middleware in Express
 ### 6 - Serve a GraphQL Schema as Middleware in Express

@@ -142,4 +142,42 @@ Listening on: http://localhost:3000
 * Returns: message": "Field \"video\" argument \"id\" of type \"ID!\" is required
 
 ### 9 - Use GraphQLList with GraphQLObject Types
+
+* We may want to retrieve the full list of videos liek earlier
+* Add field called videos
+* Go into data/index.js
+* Helper: Add helper function for the list
+* const getVideos = () => new Promise((resolve) => resolve(videos));
+* exports.getVideos = getVideos;
+* index.js: require  getVideos
+* index.js: require GraphQLList
+* add videos to field
+* { videos{ title } }
+* returns list of titles
+
 ### 10 - Write a GraphQL Mutation
+* If we got to GraphiQL we can get the type definitions
+* We should see two query types video and videos
+* We use a mutation to add more videos to our platform
+* Create new GraphQLObjectType with name, description, fields
+* In fields, createVideo
+* Add in title, duration, released (type and description) for each
+* Add in a resolve handler
+* In data/index.js add a Helper for creating the video - createVideo
+* Export at bottom of file
+* Go back into index.js: require at top
+* Now go back to Mutation
+* Rename variable to mutationType
+* Add to schema by passing it into mutation field
+* We start our server * http://localhost:3000/graphql
+* There is now a new Mutation type in GraphiQL
+* If we pass in: mutation M { createVideo(title:"Foo",duration: 300,released:false){ id, title }}
+* RESULT: {"data": {"createVideo": {"id": "Rm9v","title": "Foo"}}}
+* { videos{ title } }
+* Verified record added
+
+### 11 - Create an Input Object Type for Complex Mutations
+### 12 - Write a GraphQL Mutation
+### 13 - Write a GraphQL Mutation
+### 14 - Write a GraphQL Mutation
+### 15 - Write a GraphQL Mutation

@@ -2,17 +2,17 @@
 
 const express = require ('express');
 const graphqlHTTP = require ('express-graphql');
-const {getVideoById} = require ('./src/data/');
-
 const {
   GraphQLSchema,
   GraphQLObjectType,
+  GraphQLList,
   GraphQLNonNull,
   GraphQLID,
   GraphQLString,
   GraphQLInt,
   GraphQLBoolean,
 }  = require ('graphql');
+const {getVideoById, getVideos, createVideo} = require ('./src/data/');
 
 const PORT = process.env.PORT || 3000;
 const server = express();
@@ -44,6 +44,10 @@ const queryType = new GraphQLObjectType ({
   name: 'QueryType',
   description: 'The root query type',
   fields:  {
+    videos: {
+      type: new GraphQLList(videoType),
+      resolve: getVideos
+    },
     video: {
       type: videoType,
       args: {
@@ -59,8 +63,36 @@ const queryType = new GraphQLObjectType ({
   }
 });
 
+const mutationType = new GraphQLObjectType({
+  name:'Mutation',
+  description:'The root Mutation type',
+  fields: {
+    createVideo: {
+      type: videoType,
+      args: {
+        title: {
+          type: new GraphQLNonNull(GraphQLString),
+          description: 'The title of the video',
+        },
+        duration: {
+          type: new GraphQLNonNull(GraphQLInt),
+          description: 'Duration in seconds',
+        },
+        released: {
+          type: new GraphQLNonNull(GraphQLBoolean),
+          description: 'The video is released',
+        },
+      },
+      resolve: (_, args) => {
+        return createVideo(args);
+      }
+    },
+  }
+});
+
 const schema = new GraphQLSchema ({
-  query: queryType
+  query: queryType,
+  mutation: mutationType
 });
 
 

@@ -1,5 +1,12 @@
 # graphql-server
 
+node index.js  
+
+Dashboard: http://localhost:3000/graphql  
+
+Listening on: http://localhost:3000  
+
+
 ### 1 - Create a GraphQL schema 4:16
 
 * > yarn init -y (generates package.json)
@@ -72,8 +79,37 @@
 * add server.use('/graphql', graphqlHTTP({}))
 * >node index.js
 * Listening on http://localhost:3000
-* http://localhost:3000/graphql0
+* http://localhost:3000/graphql
 * index.js: under server.use rootValue: resolvers
 * quite server, save index file, restart
 * http://localhost:3000/graphql
 * { videos { title }}
+
+### 6 - Write a GraphQL Schema in JavaScript
+
+* We're currently using the buildSchema function
+* We can also do this with javascript
+* We'll first change the require functions
+* Add new type in the require area
+* Add new schema in pure javascript (without the buildSchema)
+* Define queryType and fields
+* Define videoType and fields
+* Remove the old schema and resolvers.
+* In server remove the root value
+* > node index.js
+* http://localhost:3000/graphql
+* {
+  video {
+    id
+    title
+    duration
+    watched
+  }
+}
+
+### 7 - Use Arguments in a GraphQL Query
+
+
+### 6 - Serve a GraphQL Schema as Middleware in Express
+### 6 - Serve a GraphQL Schema as Middleware in Express
+### 6 - Serve a GraphQL Schema as Middleware in Express

@@ -177,6 +177,19 @@ Listening on: http://localhost:3000
 * Verified record added
 
 ### 11 - Create an Input Object Type for Complex Mutations
+
+* An INPUT TYPE can capture all the arguments in the createVideo
+* Replace (save for later) all the args with type: new GraphQLNonNull(videoInputType),
+* Make new const videoInputType = new GraphQLInputObjectType({
+* Import at top of file
+* Copy the args into the fields area
+* Update to: return createVideo(args.video);
+* We start our server * http://localhost:3000/graphql
+* See inside Mutation the correct fields createVideo(video: videoInput!): Video
+* If we pass in:  mutation M { createVideo(video: {title: "Foo", duration: 300, released: false}) { id, title }}
+
+
+
 ### 12 - Write a GraphQL Mutation
 ### 13 - Write a GraphQL Mutation
 ### 14 - Write a GraphQL Mutation

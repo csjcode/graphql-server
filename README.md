@@ -283,4 +283,22 @@ https://stackoverflow.com/questions/33399901/in-relay-what-role-do-the-node-inte
 
 ### 14 - Convert GraphQL List Type to a Relay Connection Type
 
+* We need to page through collections of items
+* In this case a collection of videos - in Relay it's called connections
+* Convert videos field into a connection, update what we are grabbing from the GraphQL-RelayPackage
+* Define VideoConnection index.js - const { connectionType: VideoConnection } = connectionDefinitions
+* Next update videos type - type: VideoConnection, args, resolve
+* try to run server: node index.js
+* { videos { edges {node {id,title,duration}}}}
+* Returns all data for those fields
+* How to get totalCount?
+* go to index.js: const { connectionType: VideoConnection }
+* return conn.edges.length;
+* {  videos {		totalCount  }}
+* Returns object count
+* You can also put in videos(first:1)
+* {  videos(first:1) {    edges {      node {        title      }    }  }}
+* this can be changed to last
+* 
+
 ### 15 - Write a GraphQL Mutation

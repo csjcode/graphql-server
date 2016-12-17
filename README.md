@@ -299,6 +299,22 @@ https://stackoverflow.com/questions/33399901/in-relay-what-role-do-the-node-inte
 * You can also put in videos(first:1)
 * {  videos(first:1) {    edges {      node {        title      }    }  }}
 * this can be changed to last
-* 
+*
 
-### 15 - Write a GraphQL Mutation
+### 15 - Relay Input Object Mutations
+
+* Update existing Mutation field
+* index.js: reuire function from graphql-relay
+* mutationWithClientMutationId
+* next define Mutation
+* const videoMutation = mutationWithClientMutationId({})
+* copy fields from videoInputType
+* delete videoInputType
+* replace createVideo fields
+* try to run server: node index.js
+* adding ! means that it cannot be null
+
+* Query: mutation AddVideoQuery($input: AddVideoInput!) {  createVideo(input: $input) {    video {      title    }  }}
+* Query variables: {  "input" : {    "title": "My Video Title",    "duration": 300,    "released": false,    "clientMutationId": "abcd"  }}
+* Also you can add another Query n the Query field:
+* query AllVideosQuery{  videos{    edges{      node {        title      }    }  }}

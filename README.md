@@ -1,10 +1,32 @@
 # graphql-server
 
+* Reference: http://graphql.org/learn/
+
+### Notes
+
+* Facebook: "When we built Facebook's mobile applications, we needed a data-fetching API powerful enough to describe all of Facebook, yet simple enough to be easy to learn and use by our product developers. We developed GraphQL three years ago to fill this need."  
+
+* GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.  
+
+* A GraphQL query is a string that is sent to a server to be interpreted and fulfilled, which then returns JSON back to the client.  
+
+* Defines a data shape: The first thing you'll notice is that GraphQL queries mirror their response.  
+
+* Hierarchical, Strongly typed, Protocol (not storage) Introspective (GraphQL server can be queried for the types it supports.)
+
+* Relay, React Native, and GraphQL are designed as parts of a complete development stack built around the focus of the product designer and developer  
+
+* Send a GraphQL query to your API and get exactly what you need  
+
+
+### How to Start Server
+
 node index.js  
 
 Dashboard: http://localhost:3000/graphql  
 
 Listening on: http://localhost:3000  
+
 
 
 ### 1 - Create a GraphQL schema 4:16
@@ -217,5 +239,8 @@ Listening on: http://localhost:3000
 * try to run server: node index.js
 
 ### 13 - Write a GraphQL Mutation
+
+
+
 ### 14 - Write a GraphQL Mutation
 ### 15 - Write a GraphQL Mutation

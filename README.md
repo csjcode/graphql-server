@@ -188,9 +188,34 @@ Listening on: http://localhost:3000
 * See inside Mutation the correct fields createVideo(video: videoInput!): Video
 * If we pass in:  mutation M { createVideo(video: {title: "Foo", duration: 300, released: false}) { id, title }}
 
+### 12 - Add an Interface to a GraphQL Schema
 
+* We have a videoType with ID, GraphQLID. If we added an instructorType we might also want it to havethat field
+* So to do this we make a GraphQLInterfaceType
+* Create file src\node.js
+* Import from graphql necessary modules
+* Create const nodeInterface
+* export nodeInterface
+* import in index.js - const nodeInterface = require ('./src/node.js');
+* Add interfacesfield to videoType object
+* this allows us to use the interface fields when we have SHARED FIELDS between types
+* define an instructorType with fields and interfaces
+* comment out instructorType
+* try to run server: node index.js
+* ERROR: we get an error becasue the resolver has not been set up in the interface
+* Let's go into node.js
+* Add method:  resolveType: (object) => {
+* return videoType;
+* index.js - we are exporting videoType: exports.videoType = videoType;
+* node.js - import at top
+* try to run server: node index.js
+* ERROR: we get an error because interface is not following id correctly
+* index.js - change videoType id to GraphQLNonNull(GraphQLID)
+* try to run server: node index.js
+* ERROR: we get an error because forgot the preceding new - Cannot call a class as a function
+* should have been: new GraphQLNonNull(GraphQLID),
+* try to run server: node index.js
 
-### 12 - Write a GraphQL Mutation
 ### 13 - Write a GraphQL Mutation
 ### 14 - Write a GraphQL Mutation
 ### 15 - Write a GraphQL Mutation
